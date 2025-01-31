@@ -1,0 +1,18 @@
+.AppBar {
+    background-color: #337ab7;
+  }
+  
+  .Toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .Typography {
+    color: #fff;
+  }
+  
+  .Button {
+    color: #fff;
+    text-decoration: none;
+  }

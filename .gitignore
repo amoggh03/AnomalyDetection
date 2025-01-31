@@ -1,18 +1,27 @@
 # Ignore dependencies folder
 node_modules/
+/.pnp
+.pnp.js
 
 # Ignore environment variables
 .env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
 # Ignore video files
 public/videos/motor.mp4
 
 # Ignore build artifacts
-build/
+/build
 
 # Ignore log files
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Ignore OS-specific files
 .DS_Store
-Thumbs.dbgit init
+Thumbs.db

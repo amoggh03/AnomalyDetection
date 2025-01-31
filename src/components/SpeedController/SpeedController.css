@@ -1,0 +1,19 @@
+.speed-controller-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .speed-label {
+    margin-right: 10px;
+  }
+  
+  .speed-input {
+    width: 200px;
+    margin-right: 10px;
+  }
+  
+  .speed-value {
+    margin-left: 10px;
+  }
