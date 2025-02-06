@@ -19,33 +19,59 @@ except Exception as e:
 # Global variables to track motor state
 motor_speed = 0  # Current motor speed (0 = stopped, >0 = running)
 temperature = 70  # Initial temperature
-vibration_values = [0.0, 0.0, 0.0, 0.0]  # Initial vibration values [bearingA_x, bearingA_y, bearingB_x, bearingB_y]
 
 # Threshold for anomaly detection (tuned based on training/validation loss)
-ANOMALY_THRESHOLD = 0.1  # Adjust this value based on your dataset
+ANOMALY_THRESHOLD = 0.3  # Adjust this value based on your dataset
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    global motor_speed, temperature, vibration_values
+    global motor_speed, temperature
 
     # Parse incoming JSON data
     data = request.get_json()
     motor_speed = data.get('speed', 0)  # Default to 0 if 'speed' is missing
 
     # Simulate vibration data based on motor speed
-    if motor_speed > 0:
-        # Generate random vibration values within a realistic range
+    if motor_speed == 0:
+        # Motor stopped: No vibration
+        vibration_values = [0.0, 0.0, 0.0, 0.0]
+        temperature = max(temperature - 1, 70)  # Simulate temperature decrease
+    elif motor_speed == 1:
+        # Low speed: Small vibrations, no anomalies
         vibration_values = [
-            np.random.uniform(-0.2, 0.2),  # bearingA_x
+            np.random.uniform(-0.05, 0.05),  # bearingA_x
+            np.random.uniform(-0.05, 0.05),  # bearingA_y
+            np.random.uniform(-0.05, 0.05),  # bearingB_x
+            np.random.uniform(-0.05, 0.05)   # bearingB_y
+        ]
+        temperature += 0.5  # Simulate temperature increase
+    elif motor_speed == 2:
+        # Medium speed: Moderate vibrations, no anomalies
+        vibration_values = [
+            np.random.uniform(-0.1, 0.1),  # bearingA_x
             np.random.uniform(-0.1, 0.1),  # bearingA_y
             np.random.uniform(-0.1, 0.1),  # bearingB_x
             np.random.uniform(-0.1, 0.1)   # bearingB_y
         ]
-        temperature += 0.5  # Simulate temperature increase when motor is running
-    else:
-        # Reset vibration values and simulate temperature decrease when motor is stopped
-        vibration_values = [0.0, 0.0, 0.0, 0.0]
-        temperature = max(temperature - 1, 70)  # Prevent temperature from dropping below 70
+        temperature += 1.0
+    elif motor_speed == 3:
+        # High speed: Higher vibrations, but still within normal range
+        vibration_values = [
+            np.random.uniform(-0.15, 0.15),  # bearingA_x
+            np.random.uniform(-0.15, 0.15),  # bearingA_y
+            np.random.uniform(-0.15, 0.15),  # bearingB_x
+            np.random.uniform(-0.15, 0.15)   # bearingB_y
+        ]
+        temperature += 1.5
+    elif motor_speed >= 4:
+        # Very high speed: Excessive vibrations, likely anomalies
+        vibration_values = [
+            np.random.uniform(-0.3, 0.3),  # bearingA_x
+            np.random.uniform(-0.3, 0.3),  # bearingA_y
+            np.random.uniform(-0.3, 0.3),  # bearingB_x
+            np.random.uniform(-0.3, 0.3)   # bearingB_y
+        ]
+        temperature += 2.0
 
     # Scale the vibration data
     scaled_vibration = scaler.transform([vibration_values])
