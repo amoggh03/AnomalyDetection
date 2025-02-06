@@ -1,0 +1,82 @@
+/* src/index.css */
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #000000; /* Black background */
+  color: #FF6A00; /* Vibrant Orange text */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #FF6A00; /* Vibrant Orange headers */
+}
+
+button {
+  background-color: #F25C05; /* Deep Orange buttons */
+  color: #000000; /* Black text on buttons */
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #E95420; /* Muted Orange on hover */
+}
+
+input[type='range'] {
+  width: 200px;
+  height: 10px;
+  background: #F25C05; /* Deep Orange slider */
+  outline: none;
+  border-radius: 5px;
+  -webkit-appearance: none;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #000000; /* Black thumb */
+  border: 2px solid #FF6A00; /* Vibrant Orange border */
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.video-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.sensor-display {
+  margin: 20px 0;
+  padding: 15px;
+  border: 1px solid #FF6A00; /* Vibrant Orange border */
+  border-radius: 8px;
+  background-color: #232429; /* Dark Gray-Blue */
+  box-shadow: 0 4px 6px rgba(255, 106, 0, 0.2); /* Vibrant Orange shadow */
+}
+
+.speed-controller {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #212328; /* Charcoal Gray */
+  color: #FF6A00; /* Vibrant Orange text */
+  border-top: 1px solid #FF6A00; /* Vibrant Orange border */
+}

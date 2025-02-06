@@ -1,0 +1,40 @@
+fresh-anomaly-detection-website/
+├── node_modules/
+├── public/
+│   ├── images/
+│   │   └── logo.png
+│   ├── videos/
+│   │   └── motor.mp4
+│   ├── index.html
+├── src/
+│   ├── components/
+│   │   ├── Navbar/
+│   │   │   ├── Navbar.js
+│   │   │   └── Navbar.css
+│   │   ├── VideoPlayer/
+│   │   │   ├── VideoPlayer.js
+│   │   │   └── VideoPlayer.css
+│   │   ├── SpeedController/
+│   │   │   ├── SpeedController.js
+│   │   │   └── SpeedController.css
+│   │   ├── SensorDisplay/
+│   │   │   ├── SensorDisplay.js
+│   │   │   └── SensorDisplay.css
+│   │   ├── AnomalyDetection/
+│   │   │   ├── AnomalyDetection.js
+│   │   │   └── AnomalyDetection.css
+│   │   └── Footer/
+│   │       ├── Footer.js
+│   │       └── Footer.css
+│   ├── pages/
+│   │   └── HomePage.js
+│   ├── utils/
+│   │   └── dataHandler.js
+│   ├── App.js
+│   ├── index.js
+│   └── index.css
+├── .babelrc
+├── config-overrides.js
+├── package.json
+├── README.md
+└── DIRECTORY_STRUCTURE.txt

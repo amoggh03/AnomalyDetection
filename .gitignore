@@ -10,11 +10,8 @@ node_modules/
 .env.test.local
 .env.production.local
 
-# Ignore video files
-public/videos/motor.mp4
-
 # Ignore build artifacts
-/build
+/build/
 
 # Ignore log files
 *.log
@@ -25,3 +22,6 @@ yarn-error.log*
 # Ignore OS-specific files
 .DS_Store
 Thumbs.db
+
+# Explicitly allow fresh-anomaly-detection-website folder
+!fresh-anomaly-detection-website/
