@@ -1,6 +1,24 @@
-.anomaly-status {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 16px;
-    font-weight: bold;
-  }
+/* src/components/AnomalyDetection/AnomalyDetection.css */
+
+.anomaly-detection {
+  margin-top: 20px;
+}
+
+.anomaly-detection h3 {
+  text-align: center; /* Center the heading */
+  margin-bottom: 10px;
+}
+
+.anomaly-detection p {
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.anomaly-detection p.success {
+  color: green;
+}
+
+.anomaly-detection p.error {
+  color: red;
+}

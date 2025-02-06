@@ -4,7 +4,7 @@ import './Footer.css';
 const Footer = () => {
   return (
     <footer>
-      <p>&copy; 2025 Anomaly Detection System</p>
+      <p>&copy; 2025 Anomaly Detection System, Amoggha C H</p>
     </footer>
   );
 };

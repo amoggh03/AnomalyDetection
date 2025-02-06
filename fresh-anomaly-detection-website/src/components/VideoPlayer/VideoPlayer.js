@@ -23,7 +23,7 @@ const VideoPlayer = ({ videoSrc, speed }) => {
   }, [speed]);
 
   return (
-    <div style={{ width: '50%', margin: '0 auto' }}>
+    <div className="video-player">
       <video
         ref={videoRef}
         width="100%"

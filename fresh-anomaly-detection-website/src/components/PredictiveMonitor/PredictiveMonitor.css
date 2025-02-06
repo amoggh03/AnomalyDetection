@@ -1,0 +1,50 @@
+.vibration-data {
+    position: absolute;
+    top: 470px; /* Adjusted to match the yellow box */
+    left: 213px;
+    width: 939px;
+    height: 33px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 16px;
+    border: 1px solid #fff;
+    padding: 5px;
+  }
+  
+  .vibration-values {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    align-items: center;
+  }
+  
+  .bearing-item {
+    text-align: center;
+    flex: 1; /* Ensures equal spacing for all bearings */
+  }
+
+  .speed-circle {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    color: black;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin-left: 10px;
+  }
+
+  .log-box {
+    height: 300px; /* Fixed height for scrollable logs */
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    font-family: monospace;
+    font-size: 12px;
+  }

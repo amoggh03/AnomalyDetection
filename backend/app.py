@@ -1,3 +1,5 @@
+# app.py
+
 from flask import Flask, request, jsonify
 import numpy as np
 import joblib
@@ -19,13 +21,14 @@ except Exception as e:
 # Global variables to track motor state
 motor_speed = 0  # Current motor speed (0 = stopped, >0 = running)
 temperature = 70  # Initial temperature
+logs = []  # Global variable to store logs
 
 # Threshold for anomaly detection (tuned based on training/validation loss)
 ANOMALY_THRESHOLD = 0.3  # Adjust this value based on your dataset
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    global motor_speed, temperature
+    global motor_speed, temperature, logs
 
     # Parse incoming JSON data
     data = request.get_json()
@@ -85,16 +88,23 @@ def predict():
     # Calculate the reconstruction error (MAE)
     loss_mae = np.mean(np.abs(scaled_vibration - reconstructed))
 
-    # Log debugging information
-    print("\nDebugging Information:")
-    print(f"Motor Speed: {motor_speed}")
-    print(f"Vibration Values: {vibration_values}")
-    print(f"Scaled Vibration: {scaled_vibration}")
-    print(f"Reconstructed Output: {reconstructed}")
-    print(f"Reconstruction Error (MAE): {loss_mae}")
-
     # Detect anomaly based on the threshold
     anomaly = loss_mae > ANOMALY_THRESHOLD
+
+    # Log debugging information
+    log_entry = f"""
+Debugging Information:
+Motor Speed: {motor_speed}
+Vibration Values: {vibration_values}
+Scaled Vibration: {scaled_vibration.tolist()}
+Reconstructed Output: {reconstructed.tolist()}
+Reconstruction Error (MAE): {loss_mae}
+"""
+    logs.append(log_entry)
+
+    # Keep only the last 10 logs to avoid excessive memory usage
+    if len(logs) > 10:
+        logs.pop(0)
 
     # Prepare the response
     response = {
@@ -106,6 +116,11 @@ def predict():
     }
 
     return jsonify(response)
+
+
+@app.route('/logs', methods=['GET'])
+def get_logs():
+    return jsonify({"logs": logs})
 
 
 if __name__ == '__main__':

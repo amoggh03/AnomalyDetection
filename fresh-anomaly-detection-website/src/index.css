@@ -3,17 +3,17 @@
 body {
   margin: 0;
   font-family: 'Arial', sans-serif;
-  background-color: #000000; /* Black background */
-  color: #FF6A00; /* Vibrant Orange text */
+  background-color: #000; /* Black background */
+  color: #ff8c00; /* Neon orange text */
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #FF6A00; /* Vibrant Orange headers */
+  color: #ff8c00; /* Neon orange headers */
 }
 
 button {
-  background-color: #F25C05; /* Deep Orange buttons */
-  color: #000000; /* Black text on buttons */
+  background-color: #ff8c00; /* Neon orange buttons */
+  color: #000; /* Black text on buttons */
   border: none;
   padding: 10px 20px;
   font-size: 16px;
@@ -23,13 +23,13 @@ button {
 }
 
 button:hover {
-  background-color: #E95420; /* Muted Orange on hover */
+  background-color: #e67e00; /* Slightly darker orange on hover */
 }
 
 input[type='range'] {
   width: 200px;
   height: 10px;
-  background: #F25C05; /* Deep Orange slider */
+  background: #ff8c00; /* Neon orange slider */
   outline: none;
   border-radius: 5px;
   -webkit-appearance: none;
@@ -40,8 +40,8 @@ input[type='range']::-webkit-slider-thumb {
   appearance: none;
   width: 20px;
   height: 20px;
-  background: #000000; /* Black thumb */
-  border: 2px solid #FF6A00; /* Vibrant Orange border */
+  background: #000; /* Black thumb */
+  border: 2px solid #ff8c00; /* Neon orange border */
   border-radius: 50%;
   cursor: pointer;
 }
@@ -61,10 +61,10 @@ input[type='range']::-webkit-slider-thumb {
 .sensor-display {
   margin: 20px 0;
   padding: 15px;
-  border: 1px solid #FF6A00; /* Vibrant Orange border */
+  border: 1px solid #ff8c00; /* Neon orange border */
   border-radius: 8px;
-  background-color: #232429; /* Dark Gray-Blue */
-  box-shadow: 0 4px 6px rgba(255, 106, 0, 0.2); /* Vibrant Orange shadow */
+  background-color: #111; /* Dark background */
+  box-shadow: 0 4px 6px rgba(255, 140, 0, 0.2); /* Neon orange shadow */
 }
 
 .speed-controller {
@@ -76,7 +76,7 @@ input[type='range']::-webkit-slider-thumb {
   text-align: center;
   margin-top: 20px;
   padding: 10px;
-  background-color: #212328; /* Charcoal Gray */
-  color: #FF6A00; /* Vibrant Orange text */
-  border-top: 1px solid #FF6A00; /* Vibrant Orange border */
+  background-color: #111; /* Dark footer */
+  color: #ff8c00; /* Neon orange text */
+  border-top: 1px solid #ff8c00; /* Neon orange border */
 }
