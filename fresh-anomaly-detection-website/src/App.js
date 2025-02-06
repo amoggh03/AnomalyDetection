@@ -17,17 +17,30 @@ function App() {
   const [tempAlert, setTempAlert] = useState(null); // Temperature alert
 
   useEffect(() => {
-    const intervalId = setInterval(async () => {
-      try {
-        const data = await fetchData(speed); // Fetch data from the backend
-        setVibration(data.vibration);
-        setTemperature(data.temperature);
-        setAnomalyStatus(data.anomaly);
-        setTempAlert(data.temp_alert || '');
-      } catch (error) {
-        console.error('Error updating data:', error);
-      }
-    }, 1000); // Fetch data every second
+    let intervalId;
+
+    if (speed > 0) {
+      // Fetch data every second while the motor is running
+      intervalId = setInterval(async () => {
+        try {
+          const data = await fetchData(speed); // Pass the current speed to the backend
+          if (data) {
+            setVibration(data.vibration);
+            setTemperature(data.temperature);
+            setAnomalyStatus(data.anomaly);
+            setTempAlert(data.temp_alert || '');
+          }
+        } catch (error) {
+          console.error('Error updating data:', error);
+        }
+      }, 1000);
+    } else {
+      // Gradually decrease temperature and reset vibration when the motor is stopped
+      intervalId = setInterval(() => {
+        setTemperature((prevTemp) => Math.max(prevTemp - 1, 70)); // Decrease temperature
+        setVibration([0.0, 0.0, 0.0, 0.0]); // Reset vibration values
+      }, 1000);
+    }
 
     return () => clearInterval(intervalId); // Cleanup on unmount
   }, [speed]);
@@ -35,7 +48,7 @@ function App() {
   return (
     <div>
       <Navbar />
-      <VideoPlayer videoSrc="/videos/motor.mp4" />
+      <VideoPlayer videoSrc="/videos/motor.mp4" speed={speed} />
       <SpeedController speed={speed} setSpeed={setSpeed} />
       <SensorDisplay vibration={vibration} temperature={temperature} tempAlert={tempAlert} />
       <AnomalyDetection anomalyStatus={anomalyStatus} />

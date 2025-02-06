@@ -9,6 +9,14 @@ const SpeedController = ({ speed, setSpeed }) => {
     setSpeed(newSpeed);
   };
 
+  const toggleMotor = () => {
+    if (speed === 0) {
+      setSpeed(1); // Start motor at minimum speed (1)
+    } else {
+      setSpeed(0); // Stop motor
+    }
+  };
+
   return (
     <div>
       <label htmlFor="speed">Motor Speed:</label>
@@ -19,8 +27,13 @@ const SpeedController = ({ speed, setSpeed }) => {
         max="5"
         value={speed}
         onChange={handleSpeedChange}
+        disabled={speed === 0} // Disable slider when motor is stopped
       />
       <span>{speed}</span>
+
+      <button onClick={toggleMotor}>
+        {speed === 0 ? 'Start Motor' : 'Stop Motor'}
+      </button>
     </div>
   );
 };

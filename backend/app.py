@@ -85,6 +85,14 @@ def predict():
     # Calculate the reconstruction error (MAE)
     loss_mae = np.mean(np.abs(scaled_vibration - reconstructed))
 
+    # Log debugging information
+    print("\nDebugging Information:")
+    print(f"Motor Speed: {motor_speed}")
+    print(f"Vibration Values: {vibration_values}")
+    print(f"Scaled Vibration: {scaled_vibration}")
+    print(f"Reconstructed Output: {reconstructed}")
+    print(f"Reconstruction Error (MAE): {loss_mae}")
+
     # Detect anomaly based on the threshold
     anomaly = loss_mae > ANOMALY_THRESHOLD
 
