@@ -1,19 +1,19 @@
+// src/components/SpeedController/SpeedController.js
+
 import React from 'react';
 import './SpeedController.css';
 
 const SpeedController = ({ speed, setSpeed }) => {
+  const toggleMotor = () => {
+    setSpeed(speed === 0 ? 1 : 0); // Toggle between 0 (stopped) and 1 (running)
+  };
+
   return (
     <div>
-      <label htmlFor="speed">Motor Speed:</label>
-      <input
-        type="range"
-        id="speed"
-        min="0"
-        max="5"
-        value={speed}
-        onChange={(e) => setSpeed(Number(e.target.value))}
-      />
-      <span>{speed}</span>
+      <button onClick={toggleMotor}>
+        {speed === 0 ? 'Start Motor' : 'Stop Motor'}
+      </button>
+      <p>Current Speed: {speed}</p>
     </div>
   );
 };

@@ -1,12 +1,12 @@
 // src/App.js
 
 import React, { useState, useEffect } from 'react';
-import Navbar from './components/Navbar/Navbar'; // Default import
-import VideoPlayer from './components/VideoPlayer/VideoPlayer'; // Default import
-import SpeedController from './components/SpeedController/SpeedController'; // Default import
-import SensorDisplay from './components/SensorDisplay/SensorDisplay'; // Default import
-import AnomalyDetection from './components/AnomalyDetection/AnomalyDetection'; // Default import
-import Footer from './components/Footer/Footer'; // Default import
+import Navbar from './components/Navbar/Navbar';
+import VideoPlayer from './components/VideoPlayer/VideoPlayer';
+import SpeedController from './components/SpeedController/SpeedController';
+import SensorDisplay from './components/SensorDisplay/SensorDisplay';
+import AnomalyDetection from './components/AnomalyDetection/AnomalyDetection';
+import Footer from './components/Footer/Footer';
 import { fetchData } from './utils/dataHandler';
 
 function App() {
